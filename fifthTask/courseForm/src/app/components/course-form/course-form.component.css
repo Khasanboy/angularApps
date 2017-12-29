@@ -1,0 +1,8 @@
+.formal{
+    padding: 50px;
+    border: 1px solid #ccc;
+}
+
+.form-control.ng-touched.ng-invalid{
+    border: 2px solid red;
+}

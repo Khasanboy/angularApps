@@ -1,0 +1,20 @@
+<div class="zippy">
+  <div 
+  class="zippy-heading"
+  (click)="toggle()" 
+  [ngClass]="{
+    'toggledMe':toggled
+  }"
+  >{{title}} 
+  <span 
+  class="glyphicon"
+  [ngClass] = "{
+    'glyphicon-chevron-down':!toggled,
+    'glyphicon-chevron-up':toggled
+  }"
+  ></span>
+</div>
+  <div *ngIf="toggled" class="zippy-body">
+    <ng-content></ng-content>
+  </div>
+</div>

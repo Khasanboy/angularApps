@@ -1,0 +1,25 @@
+.zippy{
+    border: 1px solid #ccc;
+    width:400px;
+}
+.zippy-heading{
+
+    border-bottom: 1px solid #ccc;
+    cursor: pointer;
+    padding: 20px;
+    font-weight: bold;
+}
+
+.toggledMe{
+    background-color: #fafafa;
+    border-bottom: 0
+}
+
+.zippy-body{
+    padding: 20px;
+}
+
+.glyphicon{
+    float: right;
+}
+
