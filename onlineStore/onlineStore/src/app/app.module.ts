@@ -1,3 +1,5 @@
+import { CategoryService } from './services/category.service';
+import { AdminAuthGuardService } from './services/admin-auth-guard.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {AngularFireModule} from 'angularfire2';
@@ -22,6 +24,7 @@ import { LoginComponent } from './components/login/login.component';
 import { AuthService } from './services/auth.service';
 import { AuthGuardService } from './services/auth-guard.service';
 import { UserService } from './services/user.service';
+import { ProductFormComponent } from './components/admin/product-form/product-form.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +38,8 @@ import { UserService } from './services/user.service';
     MyOrdersComponent,
     AdminProductsComponent,
     AdminOrdersComponent,
-    LoginComponent
+    LoginComponent,
+    ProductFormComponent
   ],
   imports: [
     BrowserModule,
@@ -53,11 +57,14 @@ import { UserService } from './services/user.service';
       {path:'order-success', component:OrderSuccessComponent, canActivate:[AuthGuardService]},
       {path:'my/orders', component:MyOrdersComponent, canActivate:[AuthGuardService]},
      
-      {path:'admin/products', component:AdminProductsComponent, canActivate:[AuthGuardService]},
-      {path:'admin/orders', component:AdminOrdersComponent, canActivate:[AuthGuardService]}
+      {path:'admin/products', component:AdminProductsComponent, canActivate:[AuthGuardService, AdminAuthGuardService]},
+      {path:'admin/orders', component:AdminOrdersComponent, canActivate:[AuthGuardService, AdminAuthGuardService]},
+
+      {path:'admin/products/new', component:ProductFormComponent, canActivate:[AuthGuardService, AdminAuthGuardService]}
+      
     ])
   ],
-  providers: [AuthService, AuthGuardService, UserService],
+  providers: [AuthService, AuthGuardService, UserService, AdminAuthGuardService, CategoryService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
